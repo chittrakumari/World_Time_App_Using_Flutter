@@ -1,4 +1,4 @@
-# world_time_app
+# World time app
 
  helps us to see the current time of different countries 
 
