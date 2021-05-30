@@ -20,7 +20,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
               'location': instance.location,
               'flag': instance.flag,
               'time': instance.time,
-              'isDayTime':instance.isDayTime,
+              'isDayTime':instance.isDaytime,
             });
           }
 
@@ -37,6 +37,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
               backgroundColor: Colors.blue[900],
               body: Center(
               child: SpinKitFadingCube(
+                duration: const Duration(milliseconds: 2000),
               color: Colors.white,
               size: 50.0,
             )

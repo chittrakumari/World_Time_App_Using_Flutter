@@ -17,14 +17,21 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
 
-    data = data.isNotEmpty ? data : ModalRoute.of(context)!.settings.arguments as Map;
-
+    String bgImage='night.jpg' ;
     // set background image
-    String bgImage = data['isDayTime'] ? 'day.jpg' : 'night.jpg';
+    if (data.isEmpty) {
+      if (null != ModalRoute.of(context)!.settings.arguments) {
+        data.addAll(ModalRoute.of(context)!.settings.arguments as Map);
+      }
+    }
+    if(data.isNotEmpty){
+      print(data);
+    };
 
+    // set background image;
+    if(data['isDaytime'] !=null) bgImage= data['isDaytime'] ? 'day.jpg' : 'night.jpg';
 
     return Scaffold(
-
       body: SafeArea(
         child: Container(
           decoration: BoxDecoration(
@@ -34,7 +41,7 @@ class _HomeState extends State<Home> {
               )
           ),
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(0, 120.0, 0, 0),
+            padding: const EdgeInsets.fromLTRB(0, 180.0, 0, 0),
             child: Column(
               children: <Widget>[
                 FlatButton.icon(
@@ -45,7 +52,7 @@ class _HomeState extends State<Home> {
                         data = {
                           'time': result['time'],
                           'location': result['location'],
-                          'isDayTime': result['isDayTime'],
+                          'isDaytime': result['isDaytime'],
                           'flag': result['flag']
                         };
                       });
@@ -59,6 +66,7 @@ class _HomeState extends State<Home> {
                     'Edit Location',
                     style: TextStyle(
                       color: Colors.grey[300],
+                        fontSize:18.0
                     ),
                   ),
                 ),
